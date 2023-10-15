@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pretest_mdi_pai/pages/detailpage.dart';
+import 'package:pretest_mdi_pai/pages/detail_page.dart';
 import '../api/api.dart';
 import '../data/user.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+  static const routeName = 'home';
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -167,8 +168,6 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           children: [
                             Text("${data.firstName} ${data.lastName}"),
-                            Text(data.university),
-                            Text(data.color),
                           ],
                         ),
                       ),
