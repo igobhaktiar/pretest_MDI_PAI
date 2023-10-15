@@ -13,7 +13,6 @@ class DetailPage extends StatelessWidget {
       body: SizedBox(
         child: Column(children: [
           Text(userData.firstName),
-          Text(userData.university),
         ]),
       ),
     );

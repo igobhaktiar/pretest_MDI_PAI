@@ -4,11 +4,9 @@ class User {
   final String email;
   final String firstName;
   final String lastName;
-  final String university;
   final String gender;
   final String image;
   final String token;
-  final String color;
 
   User({
     required this.id,
@@ -16,11 +14,9 @@ class User {
     required this.email,
     required this.firstName,
     required this.lastName,
-    required this.university,
     required this.gender,
     required this.image,
     required this.token,
-    required this.color,
   });
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -33,8 +29,6 @@ class User {
       gender: json['gender'] ?? 'male',
       image: json['image'] ?? 'image',
       token: json['token'] ?? 'token',
-      university: json['university'],
-      color: json['hair']['color'],
     );
   }
 }
