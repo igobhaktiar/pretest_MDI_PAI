@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pretest_mdi_pai/pages/home_page.dart';
 import 'package:provider/provider.dart';
 
@@ -100,62 +101,85 @@ class _LoginPageState extends State<LoginPage> {
     }
 
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 32,
-          ),
-          Container(
-            margin: const EdgeInsets.only(left: 14),
-            child: const Text(
-              'Login',
-              style: TextStyle(fontSize: 34, fontWeight: FontWeight.w700),
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          TextField(
-            controller: _usernameController,
-            decoration: const InputDecoration(
-              hintText: "Username",
-            ),
-          ),
-          TextField(
-            controller: _passwordController,
-            decoration: const InputDecoration(
-              hintText: "password",
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          if (state == AuthState.notLoggedIn) ...[
-            Center(
-              child: Container(
-                width: double.infinity,
-                color: Colors.blue,
-                child: MaterialButton(
-                  onPressed: login,
-                  child: const Text("Login"),
+      body: SizedBox(
+        height: 800,
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 100,
+              ),
+              Container(
+                child: const Text(
+                  'Login',
+                  style: TextStyle(fontSize: 34, fontWeight: FontWeight.w700),
                 ),
               ),
-            )
-          ] else if (state == AuthState.authenticating)...[
-            const Column(
-              children: [
+              const SizedBox(
+                height: 64,
+              ),
+              TextField(
+                controller: _usernameController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "Username",
+                ),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              TextField(
+                controller: _passwordController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12)
+                  ),
+                  hintText: "Password",
+                ),
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              if (state == AuthState.notLoggedIn) ...[
                 Center(
-                  child: CircularProgressIndicator(color: Colors.red),
+                  child: Container(
+                    width: double.infinity,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: Colors.blue,
+                    ),
+                    child: MaterialButton(
+                      onPressed: login,
+                      child:  Text("Login",
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700
+                      ),),
+                    ),
+                  ),
+                )
+              ] else if (state == AuthState.authenticating)...[
+                const Column(
+                  children: [
+                    Center(
+                      child: CircularProgressIndicator(color: Colors.red),
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    Text('Logging .....')
+                  ],
                 ),
-                SizedBox(
-                  height: 16,
-                ),
-                Text('Logging .....')
-              ],
-            ),
-          ]
-        ],
+              ]
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -1,14 +1,16 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'dart:math';
 import 'package:http/http.dart' as http;
+import 'package:pretest_mdi_pai/data/user_list.dart';
 
 import '../data/user.dart';
 import '../model/failure.dart';
 
 class Api {
   //function untuk menampilkan data user
-  Future<List<User>> searchUser(
+  Future<List<UserList>> searchUser(
       {required String query, int limit = 100}) async {
     final url =
         'https://dummyjson.com/users/search?q=$query&limit=$limit&skip=0';
@@ -21,7 +23,8 @@ class Api {
 
     if (response.statusCode == 200) {
       final searchData = json.decode(response.body)['users'] as List;
-      return searchData.map((user) => User.fromJson(user)).toList();
+      inspect(searchData);
+      return searchData.map((user) => UserList.fromJson(user)).toList();
     } else {
       throw Exception('Gagal terhubung');
     }
