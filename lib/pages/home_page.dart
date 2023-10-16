@@ -82,7 +82,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             SizedBox(
-              width: 32,
+              width: 36,
               child: IconButton(
                 onPressed: () {
                   showDialog(
@@ -113,32 +113,40 @@ class _HomePageState extends State<HomePage> {
                                 const SizedBox(
                                   height: 8,
                                 ),
-                                MaterialButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      // menampilkan data tanpa limit data
-                                      if (limitController.text.isEmpty) {
-                                        final query = queryController.text;
-                                        _users = Api().searchUser(query: query);
-                                      } else {
-                                        // menampilkan limit data dari input limit data
-                                        final limit = limitController == ""
-                                            ? 100
-                                            : int.parse(limitController.text);
-                                        _users = Api().searchUser(
-                                            query: queryController.text,
-                                            limit: limit);
-                                      }
-                                    });
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: SizedBox(
+                                    width: double.infinity,
+                                    height: 40,
+                                    child: MaterialButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          // menampilkan data tanpa limit data
+                                          if (limitController.text.isEmpty) {
+                                            final query = queryController.text;
+                                            _users = Api().searchUser(query: query);
+                                          } else {
+                                            // menampilkan limit data dari input limit data
+                                            final limit = limitController == ""
+                                                ? 100
+                                                : int.parse(limitController.text);
+                                            _users = Api().searchUser(
+                                                query: queryController.text,
+                                                limit: limit);
+                                          }
+                                        });
 
-                                    print(limitController.text);
-                                    Navigator.pop(context);
-                                  },
-                                  color: Colors.blue,
-                                  child: const Text(
-                                    "Submit",
-                                    style: TextStyle(
-                                      color: Colors.black,
+                                        print(limitController.text);
+                                        Navigator.pop(context);
+                                      },
+                                      color: Colors.green,
+                                      child: Text(
+                                        "Submit",
+                                        style: GoogleFonts.poppins(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                      ),
                                     ),
                                   ),
                                 )
@@ -150,51 +158,77 @@ class _HomePageState extends State<HomePage> {
                 },
                 icon: const Icon(
                   Icons.tune_outlined,
-                  color: Colors.grey,
+                  size: 30,
+                  color: Colors.blueGrey,
                 ),
               ),
             ),
             SizedBox(
-              width: 34,
+              width: 36,
               child: IconButton(
                   onPressed: () {
                     showDialog(
                         context: context,
                         builder: (context) {
-                          return Dialog(
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(12),
-                              child: Container(
-                                width: 200,
-                                height: 200,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 12,
-                                  vertical: 24,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
-                                    const Text("Do you want to Logout !?"),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        MaterialButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                            logout();
-                                          },
-                                          child: const Text("Yes"),
-                                          color: Colors.blue,
+                          return ClipRRect(
+                            borderRadius: BorderRadius.circular(30),
+                            child: Dialog(
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(30),
+                                child: Container(
+                                  width: 150,
+                                  height: 150,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 12,
+                                    vertical: 12,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceAround,
+                                    children: [
+                                       Text(
+                                        "Do you want to Logout ?",
+                                        style: GoogleFonts.poppins(
+                                          fontWeight: FontWeight.w500,
+                                          color: Colors.black87,
+                                          fontSize: 16,
                                         ),
-                                        MaterialButton(
-                                          onPressed: () {},
-                                          child: const Text("No"),
-                                          color: Colors.blue,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          MaterialButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                              logout();
+                                            },
+                                            color: Colors.red,
+                                            child: Text(
+                                              "Yes",
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ),
+                                          MaterialButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            color: Colors.blueGrey,
+                                            child: Text(
+                                              "No",
+                                              style: GoogleFonts.poppins(
+                                                color: Colors.white,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
@@ -202,8 +236,8 @@ class _HomePageState extends State<HomePage> {
                         });
                   },
                   icon: const Icon(
-                    Icons.power_settings_new,
-                    color: Colors.grey,
+                    Icons.exit_to_app_outlined,
+                    color: Colors.red,
                     size: 30,
                   )),
             )
