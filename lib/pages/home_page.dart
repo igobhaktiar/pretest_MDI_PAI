@@ -291,7 +291,7 @@ class _HomePageState extends State<HomePage> {
                                 width: 16,
                               ),
                               SizedBox(
-                                width: 300,
+                                width: MediaQuery.of(context).size.width * 0.5,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   crossAxisAlignment: CrossAxisAlignment.start,
