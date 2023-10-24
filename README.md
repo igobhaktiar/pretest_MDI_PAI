@@ -1,16 +1,6 @@
 # pretest_mdi_pai
 
 Pretest MDI PAI
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Output :
+![output1](https://github.com/igobhaktiar/pretest_MDI_PAI/assets/71805833/de2d8d4c-dcad-4075-860a-72238e6aaa93)
+![output2](https://github.com/igobhaktiar/pretest_MDI_PAI/assets/71805833/c00d359e-befd-4cbb-9a7c-ff25a57b8ff2)
